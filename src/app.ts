@@ -25,25 +25,21 @@ const app = initializeApp(firebaseConfig);
   const dbRef = ref(db); //En referens till hela databasen
 
   onValue(dbRef, (snapshot) => {
-    //Vi får tillbaka en snapshot av databasen vid tidpunkten av ändringen
+  //  Vi får tillbaka en snapshot av databasen vid tidpunkten av ändringen
 
     
-    //vi kommer åt en lokal kopia av databasens innehåll i form av JS-objekt genom .val()
+  //  vi kommer åt en lokal kopia av databasens innehåll i form av JS-objekt genom .val()
     const data = snapshot.val();
 
-  
-    // dataToArray.forEach((element)=>{
-    //   const theList = document.querySelector(".chat-box");
-    //   const li = document.createElement("li");
+    const dataToArr = Object.values(data);
+    dataToArr.forEach((element: any)=>{
+      const theList = document.querySelector(".chat-box");
+      const li = document.createElement("li");
 
-    //   li.appendChild(document.createTextNode(element));
-    //   theList.appendChild(li);
+      li.appendChild(document.createTextNode(element));
+      theList.appendChild(li);
 
 
-    // })
+    })
     
   });
-
-
-
-
